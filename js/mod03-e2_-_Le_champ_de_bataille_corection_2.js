@@ -20,18 +20,28 @@ catch (error) {
 //     console.log(publisher);
 // }
 
+let charList = "";
+
 function getCharacters(arr){
     for(const char of arr){
         characters.push(char.name);
     }
-    characters.sort()
-    console.log(characters);
-    for(const char of characters){
-        document.getElementById("characters").innerHTML += char+" , ";
+    characters.sort();
+    const infoChar = {};
+    for(const char of arr){
+        infoChar.name=char.name;
+        infoChar.img=char.images.xs;
+        infoChar.stats={
+            weapon:parseInt((char.powerstats.intelligence+char.powerstats.strength)/2),
+            shield:char.powerstats.durability,
+            combat:char.powerstats.combat,
+            life:100
+        }
+        charList += "<div><img src='"+infoChar.img+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </div>";
     }
+    document.getElementById("characters").innerHTML = charList;
 }
 
-// const chars = docum
 
 
 

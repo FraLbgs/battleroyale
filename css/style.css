@@ -1,0 +1,9 @@
+.characters{
+    height: 70vh;
+    overflow-y: scroll;
+}
+.fighters{
+    background-color: aqua;
+    height: 30vh;
+
+}
