@@ -1,23 +1,37 @@
-const publisher = []
+let characters = [];
 
 try{
     fetch("https://akabab.github.io/superhero-api/api/all.json")
     .then(response => response.json())
-    .then(json => getPublisher(json));
+    .then(json => getCharacters(json));
 }
 catch (error) {
     console.error("error" + error);
 }
 
+// let publisher = []
+// function getPublisher(arr){
+//     for(const char of arr){
+//         publisher.push(char.biography.publisher);
+//     }
+//     // console.log(publisher.sort());
+//     publisher.sort()
+//     publisher = publisher.filter((pub, i) => publisher.indexOf(pub) == i);
+//     console.log(publisher);
+// }
 
-function getPublisher(arr){
+function getCharacters(arr){
     for(const char of arr){
-        publisher.push(char.biography.publisher);
+        characters.push(char.name);
     }
-    console.log(publisher.sort());
+    characters.sort()
+    console.log(characters);
+    for(const char of characters){
+        document.getElementById("characters").innerHTML += char+" , ";
+    }
 }
 
-
+// const chars = docum
 
 
 
