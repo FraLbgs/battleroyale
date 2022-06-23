@@ -28,16 +28,14 @@ function getCharacters(arr){
         const infoChar = {};
         infoChar.name=char.name;
         infoChar["img-xs"]=char.images.xs;
-        infoChar["img-md"]=char.images.md;
+        infoChar["img-sm"]=char.images.sm;
         infoChar.stats={
             weapon:parseInt((char.powerstats.intelligence+char.powerstats.strength)/2),
             shield:char.powerstats.durability,
             combat:char.powerstats.combat,
             life:50
         }
-        // console.log(infoChar);
         characters.push(infoChar);
-        // console.log(characters);
         charList += "<div data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </div>";
     }
     document.getElementById("characters").innerHTML = charList;
@@ -48,13 +46,17 @@ function getCharacters(arr){
         const stats = document.createElement("ul");
         let li = "";
         char.addEventListener("click", function(e){
-            fighters.push(characters[char.dataset.char]);
+            const index = this.dataset.char;
+            fighters.push(characters[index]);
+            console.log(characters[index]["img-sm"]);
+            char.firstElementChild.src = characters[index]["img-sm"];
             const divCharStats = document.createElement("div");
-            divCharStats.appendChild(char);
+            divCharStats.className = "char-stat";
+            divCharStats.appendChild(this);
             document.getElementById("fighters").appendChild(divCharStats);
-            // console.log(characters[char.dataset.char].stats);
-            for(const s in characters[char.dataset.char].stats){
-                li += "<li>"+s+" : "+characters[char.dataset.char].stats[s]+"</li>"
+            // console.log(characters[index].stats);
+            for(const s in characters[index].stats){
+                li += "<li>"+s+" : "+characters[index].stats[s]+"</li>"
             }
             console.log(stats);
             stats.innerHTML += li;
