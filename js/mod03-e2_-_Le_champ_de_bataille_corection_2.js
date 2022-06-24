@@ -36,37 +36,33 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<div data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </div>";
+        charList += "<a href='#' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
     }
     document.getElementById("characters").innerHTML = charList;
 
-    const charList2 = document.querySelectorAll(".characters div");
-    
-    for(const char of charList2){
-        const stats = document.createElement("ul");
-        let li = "";
-        char.addEventListener("click", function(e){
-            const index = this.dataset.char;
+    const charTab = document.getElementById("characters");
+
+        charTab.addEventListener("click", function(e){
+            const stats = document.createElement("ul");
+            let li = "";
+            const cible = e.target.hasAttribute("src") ? e.target.parentElement : e.target;
+            console.log(e.target.parentElement);
+            const index = cible.dataset.char;
             fighters.push(characters[index]);
-            console.log(characters[index]["img-sm"]);
-            char.firstElementChild.src = characters[index]["img-sm"];
+            cible.firstElementChild.src = characters[index]["img-sm"];
             const divCharStats = document.createElement("div");
             divCharStats.className = "char-stat";
-            divCharStats.appendChild(this);
-            document.getElementById("fighters").appendChild(divCharStats);
-            // console.log(characters[index].stats);
+            divCharStats.appendChild(cible);
             for(const s in characters[index].stats){
                 li += "<li>"+s+" : "+characters[index].stats[s]+"</li>"
             }
-            console.log(stats);
             stats.innerHTML += li;
-            // document.getElementById("fighters").innerHTML += "<div>"+stats+"</div>";
             divCharStats.appendChild(stats);
-
+            document.getElementById("fighters").appendChild(divCharStats);
 
             console.table(fighters);
         });
-    }
+
 }
 
 
