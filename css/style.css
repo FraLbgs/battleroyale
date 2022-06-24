@@ -1,9 +1,26 @@
 .characters{
-    height: 70vh;
-    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 65vh;
+    overflow-x: scroll;
+
 }
 .fighters{
-    background-color: aqua;
-    height: 30vh;
+    background-color: rgb(124, 139, 139);
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
+}
+
+.char-stat{
+display: flex;
+}
+
+.char-stat [data-char]{
+    display: flex;
+    flex-direction: column;
+    top: 0;
 }
