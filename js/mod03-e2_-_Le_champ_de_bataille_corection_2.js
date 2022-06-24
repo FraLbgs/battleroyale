@@ -36,7 +36,7 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<a href='#' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
+        charList += "<a href='#' class='char-list' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
     }
     document.getElementById("characters").innerHTML = charList;
 

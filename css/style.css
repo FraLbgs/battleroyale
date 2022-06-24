@@ -1,23 +1,33 @@
-a{
+.char-list{
     text-decoration: none;
     color: black;
+    padding: 2px;
+    border: 1px black solid;
+}
+
+.fight{
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .characters{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 65vh;
+    gap : 10px;
+    height: 60vh;
     overflow-x: scroll;
-
 }
+
 .fighters{
     background-color: rgb(124, 139, 139);
-    height:auto;
+    height:30vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px;
+    overflow-y: scroll;
 }
 
 .char-stat{
@@ -27,4 +37,25 @@ a{
 .char-stat [data-char]{
     display: flex;
     flex-direction: column;
+}
+
+.main{
+    display: flex;
+}
+
+.main-c-f{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-right: 10px;
+}
+
+.duel{
+    width: 20%;
+    height: 92vh;
+    /* background-color: pink; */
+    background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
+    background-position: top center;
+    background-repeat: no-repeat;
+    border: 2px solid blue;
 }
