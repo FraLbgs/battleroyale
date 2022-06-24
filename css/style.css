@@ -1,3 +1,8 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
 .characters{
     display: flex;
     flex-wrap: wrap;
@@ -12,15 +17,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    padding: 10px;
 }
 
 .char-stat{
-display: flex;
+    display: flex;
 }
 
 .char-stat [data-char]{
     display: flex;
     flex-direction: column;
-    top: 0;
 }
