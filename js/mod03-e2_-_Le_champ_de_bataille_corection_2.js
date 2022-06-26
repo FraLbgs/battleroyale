@@ -27,8 +27,8 @@ function getCharacters(arr){
     for(const char of arr){
         const infoChar = {};
         infoChar.name=char.name;
-        infoChar["img-xs"]=char.images.xs;
-        infoChar["img-sm"]=char.images.sm;
+        infoChar.img_xs=char.images.xs;
+        infoChar.img_sm=char.images.sm;
         infoChar.stats={
             weapon:parseInt((char.powerstats.intelligence+char.powerstats.strength)/2),
             shield:char.powerstats.durability,
@@ -36,7 +36,7 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<a href='#' class='char-list' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar["img-xs"]+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
+        charList += "<a href='#' class='char-list' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
     }
     document.getElementById("characters").innerHTML = charList;
 
@@ -49,7 +49,7 @@ function getCharacters(arr){
             console.log(e.target.parentElement);
             const index = cible.dataset.char;
             fighters.push(characters[index]);
-            cible.firstElementChild.src = characters[index]["img-sm"];
+            cible.firstElementChild.src = characters[index].img_sm;
             const divCharStats = document.createElement("div");
             divCharStats.className = "char-stat";
             divCharStats.appendChild(cible);
@@ -99,9 +99,13 @@ function buryTheDeads() {
 }
 
 // // Faire s'affronter 2 joueurs
+
 function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
+   
+    document.getElementById('imgFightersAtt').src = a.img_sm;
+    document.getElementById('imgFightersDef').src = d.img_sm;
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);

@@ -3,6 +3,7 @@
     color: black;
     padding: 2px;
     border: 1px black solid;
+    background-color: rgb(170, 165, 165);
 }
 
 .fight{
@@ -53,7 +54,7 @@
 .duel{
     width: 20%;
     height: 92vh;
-    /* background-color: pink; */
+    background-color: rgb(24, 89, 133);
     background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
     background-position: top center;
     background-repeat: no-repeat;
