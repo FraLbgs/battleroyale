@@ -1,9 +1,25 @@
+/* #body{
+  
+    background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height:100%;
+    width:100%; 
+    
+} */
+
+#imgVs{
+
+}
+
 .char-list{
     text-decoration: none;
     color: black;
     padding: 2px;
     border: 1px black solid;
     background-color: rgb(170, 165, 165);
+    
 }
 
 .fight{
@@ -17,19 +33,20 @@
     flex-wrap: wrap;
     flex-direction: column;
     gap : 10px;
-    height: 60vh;
+    height: 55vh;
     overflow-x: scroll;
 }
 
 .fighters{
     background-color: rgb(124, 139, 139);
-    height:30vh;
+    height:34vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     overflow-y: scroll;
 }
+
 
 .char-stat{
     display: flex;
@@ -53,10 +70,24 @@
 
 .duel{
     width: 20%;
-    height: 92vh;
-    background-color: rgb(24, 89, 133);
+    height: 95vh;
+    background-color: pink;
     background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
     background-position: top center;
     background-repeat: no-repeat;
     border: 2px solid blue;
+    display: grid;
+    justify-content: center;
+    
 }
+
+
+    #imgFightersAtt{
+        border: 2.5px ridge rgb(2, 233, 2);
+        border-radius: 10px;
+    }
+    
+    #imgFightersDef{
+        border: 2.5px ridge rgb(255, 1, 1);
+        border-radius: 10px;
+    }
