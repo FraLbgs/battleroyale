@@ -90,6 +90,8 @@ function getDefenseScore(char) {
 // // Baisser les points de vie d'un joueur
 function decreaseLife(char, value) {
     char.stats.life -= value;
+    const life = document.querySelector('[data-char="'+characters.indexOf(char)+'"] + ul li:last-child');
+    life.innerHTML = "life : "+char.stats.life;
     return char.stats.life;
 }
 
@@ -136,9 +138,28 @@ function battle() {
     if (fighters.length <= 1) {
         console.table(fighters);
         console.log(`The winner is ${fighters[0].name}.`);
+        const winner = document.getElementById("fighters").innerHTML;
+        document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("fighters").innerHTML += winner;
+        document.getElementById("fighters").innerHTML += "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("new-select").style.display="block";
+        document.getElementById("fight").style.display="none";
         return;
     }
     return; //battle();
 }
 
 document.getElementById("fight").addEventListener("click", battle);
+
+document.getElementById("new-select").addEventListener("click", function(e){
+    fighters = []
+    const battlefield = document.getElementById("fighters");
+    battlefield.firstElementChild.remove();
+    const link = battlefield.firstElementChild.firstElementChild;
+    console.log(link);
+    link.firstElementChild.src = characters[link.dataset.char].img_xs;
+    document.getElementById("characters").appendChild(link);
+    battlefield.innerHTML = "";
+    document.getElementById("new-select").style.display="none";
+    document.getElementById("fight").style.display="block";
+});
