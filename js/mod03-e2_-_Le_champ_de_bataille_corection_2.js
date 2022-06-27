@@ -41,27 +41,27 @@ function getCharacters(arr){
     document.getElementById("characters").innerHTML = charList;
 
     const charTab = document.getElementById("characters");
+    charTab.addEventListener("click", function(e){
+        if(e.target.className === "characters") return;
+        const stats = document.createElement("ul");
+        stats.className = "stats-list";
+        let li = "";
+        const cible = e.target.hasAttribute("data-char") ? e.target : e.target.parentElement;
+        const index = cible.dataset.char;
+        fighters.push(characters[index]);
+        cible.firstElementChild.src = characters[index].img_sm;
+        const divCharStats = document.createElement("div");
+        divCharStats.className = "char-stat";
+        divCharStats.appendChild(cible);
+        for(const s in characters[index].stats){
+            li += "<li>"+s+" : "+characters[index].stats[s]+"</li>"
+        }
+        stats.innerHTML += li;
+        divCharStats.appendChild(stats);
+        document.getElementById("fighters").appendChild(divCharStats);
 
-        charTab.addEventListener("click", function(e){
-            const stats = document.createElement("ul");
-            let li = "";
-            const cible = e.target.hasAttribute("src") ? e.target.parentElement : e.target;
-            console.log(e.target.parentElement);
-            const index = cible.dataset.char;
-            fighters.push(characters[index]);
-            cible.firstElementChild.src = characters[index].img_sm;
-            const divCharStats = document.createElement("div");
-            divCharStats.className = "char-stat";
-            divCharStats.appendChild(cible);
-            for(const s in characters[index].stats){
-                li += "<li>"+s+" : "+characters[index].stats[s]+"</li>"
-            }
-            stats.innerHTML += li;
-            divCharStats.appendChild(stats);
-            document.getElementById("fighters").appendChild(divCharStats);
-
-            console.table(fighters);
-        });
+        console.table(fighters);
+    });
 
 }
 
@@ -79,12 +79,12 @@ function getRandomChar(notThisOne) {
 
 // // Récupérer le score d'attaque d'un joueur
 function getAttackScore(char) {
-    return char.stats.weapon + getRandomValue(char.stats.combat);
+    return char.stats.weapon + getRandomValue(char.stats.combat+1);
 }
 
 // // Récupérer le score de défense d'un joueur
 function getDefenseScore(char) {
-    return char.stats.shield + getRandomValue(char.stats.combat);
+    return char.stats.shield + getRandomValue(char.stats.combat+1);
 }
 
 // // Baisser les points de vie d'un joueur
