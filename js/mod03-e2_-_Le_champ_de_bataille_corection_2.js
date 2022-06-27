@@ -121,8 +121,16 @@ function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
    
-    // document.getElementById('imgFightersAtt').src = a.img_sm;
-    // document.getElementById('imgFightersDef').src = d.img_sm;
+    // Get the modal
+    const modal = document.getElementById("myModal");
+    const test = document.getElementById("imgFightersAtt");
+    
+    // Open the modal
+    console.log(modal, test);
+    modal.style.display = "block"; 
+    document.getElementById('imgFightersAtt').src = a.img_sm;
+    document.getElementById('imgFightersDef').src = d.img_sm;
+  
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
@@ -147,7 +155,6 @@ function battle() {
     if (fighters.length <= 1) {
         console.table(fighters);
         console.log(`The winner is ${fighters[0].name}.`);
-        // let winner = document.getElementById("fighters").innerHTML;
         let link = document.querySelector(".fighters a");
         link.classList.add("winner-pic");
         document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
@@ -162,6 +169,7 @@ function battle() {
 document.getElementById("fight").addEventListener("click", battle);
 
 document.getElementById("new-select").addEventListener("click", function(e){
+    document.getElementById("myModal").style.display="none";
     fighters = []
     const battlefield = document.getElementById("fighters");
     battlefield.firstElementChild.remove();
@@ -174,3 +182,4 @@ document.getElementById("new-select").addEventListener("click", function(e){
     document.getElementById("new-select").style.display="none";
     document.getElementById("fight").style.display="block";
 });
+

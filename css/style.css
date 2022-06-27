@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .body{
     background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
     background-repeat: no-repeat;
@@ -5,11 +9,6 @@
     background-size: cover;
     margin: 0;
 }
-
-.imgVs{
-    width: 80%;
-}
-
 
 .fight{
     padding: 10px 15px;
@@ -23,6 +22,7 @@
 }
 
 .main-char{
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -53,6 +53,45 @@
     border: 1px black solid;
     border-radius: 10px;
     max-width: 200px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 90%; /* Full height */
+    padding: 30px;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    border: thick double #531010;
+    /* width: 100%;   */
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 40px;
+  }
+
+.button{
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
 }
 
 .button{
@@ -159,26 +198,22 @@ progress::-webkit-progress-value {background: green;}
     width: 95%;
 }
 
-/* .duel{
-    width: 20%;
-    height: 95vh;
-    background-color: pink;
-    background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
-    background-position: top center;
-    background-repeat: no-repeat;
-    border: 2px solid blue;
-    display: grid;
-    justify-content: center;
-    
-} */
-
-
-#imgFightersAtt{
-    border: 2.5px ridge rgb(2, 233, 2);
+.imgFightersAtt{
+    border: 5px ridge rgb(2, 233, 2);
     border-radius: 10px;
+    height: 60%;
 }
 
-#imgFightersDef{
-    border: 2.5px ridge rgb(255, 1, 1);
+.imgFightersDef{
+    border: 5px ridge rgb(255, 1, 1);
     border-radius: 10px;
+    height: 60%;
 }
+
+.imgVs{
+    position: relative;
+    bottom: 250px;
+    height: 40%;
+}
+
+ 
