@@ -36,7 +36,12 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<a href='#' class='char-list' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
+        charList += "<a href='#' title='Weapon : "+infoChar.stats.weapon+
+        "\nShield : "+infoChar.stats.shield+
+        "\nCombat : "+infoChar.stats.combat+
+        "\nLife : "+infoChar.stats.life+
+        "' class='char-list' data-char='"+characters.indexOf(infoChar)+
+        "'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
     }
     document.getElementById("characters").innerHTML = charList;
 
@@ -142,10 +147,11 @@ function battle() {
     if (fighters.length <= 1) {
         console.table(fighters);
         console.log(`The winner is ${fighters[0].name}.`);
-        const winner = document.getElementById("fighters").innerHTML;
+        // let winner = document.getElementById("fighters").innerHTML;
+        let link = document.querySelector(".fighters a");
+        link.classList.add("winner-pic");
         document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
-        document.getElementById("fighters").innerHTML += winner;
-        document.getElementById("fighters").innerHTML += "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("fighters").appendChild(link);
         document.getElementById("new-select").style.display="block";
         document.getElementById("fight").style.display="none";
         return;
@@ -159,7 +165,8 @@ document.getElementById("new-select").addEventListener("click", function(e){
     fighters = []
     const battlefield = document.getElementById("fighters");
     battlefield.firstElementChild.remove();
-    const link = battlefield.firstElementChild.firstElementChild;
+    const link = battlefield.firstElementChild;
+    link.classList.remove("winner-pic");
     console.log(link);
     link.firstElementChild.src = characters[link.dataset.char].img_xs;
     document.getElementById("characters").appendChild(link);
