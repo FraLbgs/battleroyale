@@ -1,25 +1,12 @@
 .body{
-  
     background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
-    background-size:cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    
+    background-size: cover;
+    margin: 0;
 }
 
-#imgVs{
 
-}
-
-.char-list{
-    text-decoration: none;
-    color: black;
-    padding: 2px;
-    border: 1px black solid;
-    background-color: rgb(170, 165, 165);
-    
-}
 
 .fight{
     padding: 10px 15px;
@@ -27,21 +14,68 @@
     font-weight: bold;
 }
 
+.main{
+    display: flex;
+    height: 100vh;
+}
+
+.main-char{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 96%;
+    padding: 10px;
+}
+
 .characters{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    gap : 10px;
-    height: 55vh;
+    gap : 14px;
     overflow-x: scroll;
 }
 
+.char-list{
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px;
+    border: 1px black solid;
+    border-radius: 10px;
+    max-width: 200px;
+}
+
+.button{
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.fight,.new-select{
+    width: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(90deg,rgb(138, 101, 101),rgb(164, 164, 221));
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.new-select{
+    display: none;
+}
+
 .fighters{
-    background-color: rgb(124, 139, 139);
-    height:34vh;
+    background-color: rgba(124, 139, 139, 0.5);
+    width: 20%;
+    height:96%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 6px;
     padding: 5px;
     overflow-y: scroll;
 }
@@ -49,6 +83,11 @@
 
 .char-stat{
     display: flex;
+    padding: 5px;
+    width: 100%;
+    height: 15%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 .char-stat [data-char]{
@@ -56,44 +95,64 @@
     flex-direction: column;
 }
 
-.main{
-    display: flex;
+.char-stat [data-char] img{
+    height: 90%;
 }
 
-.main-c-f{
+.char-stat .char-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    width: 180px;
+}
+
+.stats-list{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    padding-right: 10px;
-}
-
-.duel{
-    width: 20%;
-    height: 95vh;
-    background-color: pink;
-    background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
-    background-position: top center;
-    background-repeat: no-repeat;
-    border: 2px solid blue;
-    display: grid;
     justify-content: center;
-    
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pv{
+    position: relative;
+    bottom: 1px;
+    width: 70px;
+    height: 15px;
+    background: white;
+}
+
+progress::-webkit-progress-bar {background-color: white; width: 100%;}
+progress::-webkit-progress-value {background: green;}
+
+.winner{
+    width: 100%;
+    /* height: 250px; */
+    opacity: 0.6;
 }
 
 
-    #imgFightersAtt{
-        border: 2.5px ridge rgb(2, 233, 2);
-        border-radius: 10px;
-    }
-    
-    #imgFightersDef{
-        border: 2.5px ridge rgb(255, 1, 1);
-        border-radius: 10px;
-    }
+
+#imgFightersAtt{
+    border: 5px ridge rgb(2, 233, 2);
+    border-radius: 10px;
+    height: 60%;
+}
+
+#imgFightersDef{
+    border: 5px ridge rgb(255, 1, 1);
+    border-radius: 10px;
+    height: 60%;
+}
+
+.imgVs{
+    height: 40%;
+}
 
 
-    /* The Modal (background) */
-.modal {
+ /* The Modal (background) */
+ .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -108,9 +167,19 @@
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    margin: 30px; 
+    padding: auto;
+    border: thick double #531010;    
+    height: 80%;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 40px;
   }
+  

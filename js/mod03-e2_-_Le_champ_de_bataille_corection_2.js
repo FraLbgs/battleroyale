@@ -41,27 +41,31 @@ function getCharacters(arr){
     document.getElementById("characters").innerHTML = charList;
 
     const charTab = document.getElementById("characters");
+    charTab.addEventListener("click", function(e){
+        if(e.target.className === "characters") return;
+        const stats = document.createElement("ul");
+        stats.className = "stats-list";
+        let li = "";
+        const cible = e.target.hasAttribute("data-char") ? e.target : e.target.parentElement;
+        const index = cible.dataset.char;
+        fighters.push(characters[index]);
+        cible.firstElementChild.src = characters[index].img_sm;
+        const divCharStats = document.createElement("div");
+        divCharStats.className = "char-stat";
+        divCharStats.appendChild(cible);
+        const keys = Object.keys(characters[index].stats);
+        const values = Object.values(characters[index].stats);
+        console.log(keys, values);
+        for(let i=0;i<3;i++){
+            li += "<li>"+keys[i]+" : "+values[i]+"</li>"
+        }
+        li += "<li>"+keys[3]+" : <progress class='pv' max='50' value="+values[3]+"></progress></li>"
+        stats.innerHTML += li;
+        divCharStats.appendChild(stats);
+        document.getElementById("fighters").appendChild(divCharStats);
 
-        charTab.addEventListener("click", function(e){
-            const stats = document.createElement("ul");
-            let li = "";
-            const cible = e.target.hasAttribute("src") ? e.target.parentElement : e.target;
-            console.log(e.target.parentElement);
-            const index = cible.dataset.char;
-            fighters.push(characters[index]);
-            cible.firstElementChild.src = characters[index].img_sm;
-            const divCharStats = document.createElement("div");
-            divCharStats.className = "char-stat";
-            divCharStats.appendChild(cible);
-            for(const s in characters[index].stats){
-                li += "<li>"+s+" : "+characters[index].stats[s]+"</li>"
-            }
-            stats.innerHTML += li;
-            divCharStats.appendChild(stats);
-            document.getElementById("fighters").appendChild(divCharStats);
-
-            console.table(fighters);
-        });
+        console.table(fighters);
+    });
 
 }
 
@@ -79,22 +83,30 @@ function getRandomChar(notThisOne) {
 
 // // Récupérer le score d'attaque d'un joueur
 function getAttackScore(char) {
-    return char.stats.weapon + getRandomValue(char.stats.combat);
+    return char.stats.weapon + getRandomValue(char.stats.combat+1);
 }
 
 // // Récupérer le score de défense d'un joueur
 function getDefenseScore(char) {
-    return char.stats.shield + getRandomValue(char.stats.combat);
+    return char.stats.shield + getRandomValue(char.stats.combat+1);
 }
 
 // // Baisser les points de vie d'un joueur
 function decreaseLife(char, value) {
     char.stats.life -= value;
+    const life = document.querySelector('[data-char="'+characters.indexOf(char)+'"] + ul li:last-child');
+    life.innerHTML = "life : <progress class='pv' max='50' value="+char.stats.life+"></progress>";
     return char.stats.life;
 }
 
 // // Sortir un joueur mort du jeu
 function buryTheDeads() {
+    for(const fighter of fighters){
+        if(fighter.stats.life<=0){
+            console.log(fighter.stats.life);
+            document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]').parentElement.remove();
+        }
+    }
     fighters = fighters.filter(char => char.stats.life > 0);
 }
 
@@ -104,10 +116,19 @@ function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
     
-   
+    // Get the modal
+    let modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    let btn = document.getElementById("fight");
+    
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block"; 
     document.getElementById('imgFightersAtt').src = a.img_sm;
-    // document.getElementById('imgVs').src = 
     document.getElementById('imgFightersDef').src = d.img_sm;
+    }
+  
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
@@ -132,9 +153,31 @@ function battle() {
     if (fighters.length <= 1) {
         console.table(fighters);
         console.log(`The winner is ${fighters[0].name}.`);
+        const winner = document.getElementById("fighters").innerHTML;
+        document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("fighters").innerHTML += winner;
+        document.getElementById("fighters").innerHTML += "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("new-select").style.display="block";
+        document.getElementById("fight").style.display="none";
         return;
     }
     return; //battle();
 }
 
 document.getElementById("fight").addEventListener("click", battle);
+
+document.getElementById("new-select").addEventListener("click", function(e){
+    fighters = []
+    const battlefield = document.getElementById("fighters");
+    battlefield.firstElementChild.remove();
+    const link = battlefield.firstElementChild.firstElementChild;
+    console.log(link);
+    link.firstElementChild.src = characters[link.dataset.char].img_xs;
+    document.getElementById("characters").appendChild(link);
+    battlefield.innerHTML = "";
+    document.getElementById("new-select").style.display="none";
+    document.getElementById("fight").style.display="block";
+});
+
+
+
