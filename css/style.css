@@ -1,8 +1,9 @@
 .body{
-    background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
+    background:url('https://www.laboiteverte.fr/wp-content/uploads/2013/05/decors-jeu-combat-118.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    background-position: bottom;
     margin: 0;
 }
 
