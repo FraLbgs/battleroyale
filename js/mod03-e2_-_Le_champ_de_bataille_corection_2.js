@@ -115,9 +115,20 @@ function buryTheDeads() {
 function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
-   
-    // document.getElementById('imgFightersAtt').src = a.img_sm;
-    // document.getElementById('imgFightersDef').src = d.img_sm;
+    
+    // Get the modal
+    let modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    let btn = document.getElementById("fight");
+    
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block"; 
+    document.getElementById('imgFightersAtt').src = a.img_sm;
+    document.getElementById('imgFightersDef').src = d.img_sm;
+    }
+  
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
@@ -167,3 +178,8 @@ document.getElementById("new-select").addEventListener("click", function(e){
     document.getElementById("new-select").style.display="none";
     document.getElementById("fight").style.display="block";
 });
+
+
+
+
+
