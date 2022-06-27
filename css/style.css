@@ -1,13 +1,12 @@
-/* #body{
+.body{
   
     background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
-    background-size:100%;
-    background-repeat: repeat-y;
+    background-size:cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    height:100%;
-    width:100%; 
+
     
-} */
+}
 
 #imgVs{
 

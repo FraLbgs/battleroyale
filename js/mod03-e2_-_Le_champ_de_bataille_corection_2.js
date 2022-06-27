@@ -103,8 +103,10 @@ function buryTheDeads() {
 function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
+    
    
     document.getElementById('imgFightersAtt').src = a.img_sm;
+    // document.getElementById('imgVs').src = 
     document.getElementById('imgFightersDef').src = d.img_sm;
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
