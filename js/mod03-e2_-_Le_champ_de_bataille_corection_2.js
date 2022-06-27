@@ -95,6 +95,12 @@ function decreaseLife(char, value) {
 
 // // Sortir un joueur mort du jeu
 function buryTheDeads() {
+    for(const fighter of fighters){
+        if(fighter.stats.life<=0){
+            console.log(fighter.stats.life);
+            document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]').parentElement.remove();
+        }
+    }
     fighters = fighters.filter(char => char.stats.life > 0);
 }
 
@@ -104,8 +110,8 @@ function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
    
-    document.getElementById('imgFightersAtt').src = a.img_sm;
-    document.getElementById('imgFightersDef').src = d.img_sm;
+    // document.getElementById('imgFightersAtt').src = a.img_sm;
+    // document.getElementById('imgFightersDef').src = d.img_sm;
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
