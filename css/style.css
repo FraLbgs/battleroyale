@@ -108,12 +108,17 @@
 }
 .imgVs{
     height: 35%;
+    position: relative;
+    top: 90px;
+    right: 25px;
 }
 .details{
     font-family:cursive;
+    font-size: 19px;
+    padding: 10px;
     width: 90%;
-    height: 40%;
-    border: 2px solid blue;
+    height: 32%;
+    border: 10px outset #64350cb0;
     color: white;
     position: relative;
     bottom: 5%;
