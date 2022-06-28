@@ -12,6 +12,29 @@
         <div class="main-char">
             <div class="select">Choose the characters that will fight by clicking on them :</div>
             <div id="characters" class="characters"></div>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-pic-life">
+                            <img id="imgFightersAtt" class="imgFightersAtt" />
+                            <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter> 
+                        </div>
+                        <div class="modal-info" id="modal-info">
+                            <img id="imgVs" class="imgVs" src="/img/imgVs.png">
+                            <div class="details" id="details"></div>
+                        </div>
+                        <div class="modal-pic-life">
+                            <img id="imgFightersDef" class="imgFightersDef" />  
+                            <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter>
+                        </div> 
+                    </div>
+
+                </div>
+            
+
             <div class="button">
                 <button id="fight" class="fight">fight !</button>
                 <button id="new-select" class="new-select">New selection</button>

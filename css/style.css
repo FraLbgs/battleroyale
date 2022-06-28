@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .body{
     background:url('https://www.laboiteverte.fr/wp-content/uploads/2013/05/decors-jeu-combat-118.gif');
     background-repeat: no-repeat;
@@ -6,11 +10,6 @@
     background-position: bottom;
     margin: 0;
 }
-
-.imgVs{
-    width: 80%;
-}
-
 
 .fight{
     padding: 10px 15px;
@@ -24,6 +23,7 @@
 }
 
 .main-char{
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -54,6 +54,98 @@
     border: 1px black solid;
     border-radius: 10px;
     max-width: 200px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 90%; /* Full height */
+    padding: 30px;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background:url('https://i.pinimg.com/originals/66/60/a2/6660a2a5695c1b5ca0eedc8560efe2ae.gif');
+    background-repeat: inherit;
+    background-attachment: inherit;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    display: flex;
+    border: thick double #531010;
+    padding: 5px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 40px;
+}
+
+.modal-pic-life{
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.pv-modal{
+    width: 100%;
+    height: 10%;
+}
+
+.imgFightersAtt{
+    border: 5px ridge rgb(2, 233, 2);
+    border-radius: 10px;
+    height: 90%;
+}
+
+.imgFightersDef{
+    border: 5px ridge rgb(255, 1, 1);
+    border-radius: 10px;
+    height: 90%;
+}
+
+.modal-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 60%;
+}
+
+.imgVs{
+    height: 35%;
+    position: relative;
+    top: 90px;
+    right: 25px;
+}
+
+.details{
+    font-family:cursive;
+    font-size: 19px;
+    padding: 10px;
+    width: 90%;
+    height: 32%;
+    border: 10px outset #64350cb0;
+    color: white;
+    position: relative;
+    bottom: 5%;
+    background-color: rgba(0, 0, 0, 0.459);
+}
+
+.button{
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
 }
 
 .button{
@@ -90,7 +182,7 @@
     flex-direction: column;
     align-items: center;
     align-content: flex-start;
-    gap: 6px;
+    gap: 9px;
     height: 95%;
     padding: 5px;
 }
@@ -100,7 +192,7 @@
     display: flex;
     padding: 5px;
     width: 100%;
-    height: 15%;
+    height: 16%;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
@@ -132,14 +224,10 @@
 
 .pv{
     position: relative;
-    bottom: 1px;
+    top: 3px;
     width: 70px;
-    height: 15px;
-    background: white;
+    height: 25px;
 }
-
-progress::-webkit-progress-bar {background-color: white; width: 100%;}
-progress::-webkit-progress-value {background: green;}
 
 .winner{
     width: 100%;
@@ -158,28 +246,4 @@ progress::-webkit-progress-value {background: green;}
 
 .winner-pic img{
     width: 95%;
-}
-
-/* .duel{
-    width: 20%;
-    height: 95vh;
-    background-color: pink;
-    background-image: url("https://c.wallhere.com/photos/6f/c3/1242x2208_px_Blurred_Colorful_Portrait_Display_vertical-1413791.jpg!d");
-    background-position: top center;
-    background-repeat: no-repeat;
-    border: 2px solid blue;
-    display: grid;
-    justify-content: center;
-    
-} */
-
-
-#imgFightersAtt{
-    border: 2.5px ridge rgb(2, 233, 2);
-    border-radius: 10px;
-}
-
-#imgFightersDef{
-    border: 2.5px ridge rgb(255, 1, 1);
-    border-radius: 10px;
 }
