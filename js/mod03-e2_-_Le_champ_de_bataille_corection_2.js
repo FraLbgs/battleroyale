@@ -1,26 +1,29 @@
 let characters = [];
 let fighters = [];
+let alignment = []
 let details =document.getElementById("details") ;
 
 try{
     fetch("https://akabab.github.io/superhero-api/api/all.json")
     .then(response => response.json())
-    .then(json => getCharacters(json));
+    .then(function (json){
+        getCharacters(json);
+        getAlignment(json);
+    }) 
 }
 catch (error) {
     console.error("error" + error);
 }
 
-// let publisher = []
-// function getPublisher(arr){
-//     for(const char of arr){
-//         publisher.push(char.biography.publisher);
-//     }
-//     // console.log(publisher.sort());
-//     publisher.sort()
-//     publisher = publisher.filter((pub, i) => publisher.indexOf(pub) == i);
-//     console.log(publisher);
-// }
+function getAlignment(arr){
+    for(const char of arr){
+        alignment.push(char.biography.alignment);
+    }
+    console.log(alignment);
+    // alignment.sort()
+    alignment = alignment.filter((pub, i) => alignment.indexOf(pub) == i);
+    console.log(alignment);
+}
 
 
 function getCharacters(arr){
@@ -204,3 +207,5 @@ document.getElementById("new-select").addEventListener("click", function(e){
     document.getElementById("new-select").style.display="none";
     document.getElementById("fight").style.display="block";
 });
+
+

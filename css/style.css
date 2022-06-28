@@ -10,6 +10,26 @@
     margin: 0;
 }
 
+.sort{
+    width: 200px;
+    height: 95%;
+    border: 2px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: column;
+}
+
+.img-letter{
+    width: 48px;
+    background-color: transparent ;
+    margin: auto;
+    
+    
+}
+
 .fight{
     padding: 10px 15px;
     font-size: 15px;
@@ -19,6 +39,7 @@
 .main{
     display: flex;
     height: 100vh;
+
 }
 
 .main-char{
@@ -174,6 +195,8 @@
     height:96%;
     padding: 10px 10px 0 10px;
     overflow-y: scroll;
+    border-radius: 10px;
+
 }
 
 .fighters{
