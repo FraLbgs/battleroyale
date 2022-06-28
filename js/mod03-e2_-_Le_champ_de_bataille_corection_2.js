@@ -23,8 +23,19 @@ catch (error) {
 // }
 
 
+function setStats(str, obj){
+    str = "<a href='#' title='Weapon : "+obj.stats.weapon+
+    "\nShield : "+obj.stats.shield+
+    "\nCombat : "+obj.stats.combat+
+    "\nLife : "+obj.stats.life+
+    "' class='char-list' data-char='"+characters.indexOf(obj)+
+    "'><img src='"+obj.img_xs+"' alt='"+obj.name+"'> " +obj.name+ " </a>";
+    return str;
+}
+
 function getCharacters(arr){
     let charList = "";
+    let stats = "";
     for(const char of arr){
         const infoChar = {};
         infoChar.name=char.name;
@@ -37,14 +48,9 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<a href='#' title='Weapon : "+infoChar.stats.weapon+
-        "\nShield : "+infoChar.stats.shield+
-        "\nCombat : "+infoChar.stats.combat+
-        "\nLife : "+infoChar.stats.life+
-        "' class='char-list' data-char='"+characters.indexOf(infoChar)+
-        "'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
+        stats += setStats(charList, infoChar);
     }
-    document.getElementById("characters").innerHTML = charList;
+    document.getElementById("characters").innerHTML = stats;
 
     const charTab = document.getElementById("characters");
     charTab.addEventListener("click", function(e){
@@ -191,16 +197,15 @@ document.getElementById("fight").addEventListener("click", battle);
 
 document.getElementById("new-select").addEventListener("click", function(e){
     document.getElementById("myModal").style.display="none";
-    fighters = []
     const battlefield = document.getElementById("fighters");
     battlefield.firstElementChild.remove();
+    battlefield.innerHTML = setStats(battlefield.innerHTML, fighters[0]);
     const link = battlefield.firstElementChild;
-    
     link.classList.remove("winner-pic");
-    console.log(link);
     link.firstElementChild.src = characters[link.dataset.char].img_xs;
     document.getElementById("characters").appendChild(link);
     battlefield.innerHTML = "";
+    fighters = []
     document.getElementById("new-select").style.display="none";
     document.getElementById("fight").style.display="block";
 });
