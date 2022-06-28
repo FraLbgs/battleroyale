@@ -111,7 +111,7 @@ function buryTheDeads() {
         if(fighter.stats.life<=0){
             console.log(fighter.stats.life);
             document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]').parentElement.remove();
-            details.innerHTML += `${fighter.name} est mort!!!<br><br>`;
+            details.innerHTML += `${fighter.name} succombe à l'attaque !!!<br><br>`;
         }
     }
     fighters = fighters.filter(char => char.stats.life > 0);
@@ -126,18 +126,23 @@ function fight(a, d) {
    
     // Get the modal
     const modal = document.getElementById("myModal");
-    const test = document.getElementById("imgFightersAtt");
+
+    
     
     // Open the modal
-    console.log(modal, test);
+    console.log(modal);
     modal.style.display = "block"; 
+
     document.getElementById('imgFightersAtt').src = a.img_sm;
     document.getElementById('imgFightersDef').src = d.img_sm;
     details.innerHTML = `${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.<br><br>`;
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
-        details.innerHTML += `${d.name} perd ${attackScore-defScore} points de vie, il lui en reste ${d.stats.life} !<br><br>`;
+        details.innerHTML += `${d.name} perd ${attackScore-defScore} points de vie, `;
+        if(d.stats.life>0){
+            details.innerHTML += `il lui en reste ${d.stats.life} !<br><br>`;
+        }
         console.log(`${d.name} perd ${attackScore-defScore} points de vie, il lui en reste ${d.stats.life} !`); 
         buryTheDeads();
         return true;
@@ -159,7 +164,7 @@ function battle() {
     
     if (fighters.length <= 1) {
         console.table(fighters);
-        details.innerHTML += `The winner is ${fighters[0].name}.`;
+        details.innerHTML += `Le gagnant est ${fighters[0].name} avec ${fighters[0].stats.life} PV restant.`;
         console.log(`The winner is ${fighters[0].name}.`);
         let link = document.querySelector(".fighters a");
         link.classList.add("winner-pic");
@@ -167,8 +172,18 @@ function battle() {
         document.getElementById("fighters").appendChild(link);
         document.getElementById("new-select").style.display="block";
         document.getElementById("fight").style.display="none";
+        const pvAtt = document.getElementById("pv-att");
+        pvAtt.setAttribute("value", attacker.stats.life);
+        const pvDef = document.getElementById("pv-def");
+        pvDef.setAttribute("value", defender.stats.life);
         return;
     }
+
+    const pvAtt = document.getElementById("pv-att");
+    pvAtt.setAttribute("value", attacker.stats.life);
+    const pvDef = document.getElementById("pv-def");
+    pvDef.setAttribute("value", defender.stats.life);
+
     return; //battle();
 }
 
@@ -180,6 +195,7 @@ document.getElementById("new-select").addEventListener("click", function(e){
     const battlefield = document.getElementById("fighters");
     battlefield.firstElementChild.remove();
     const link = battlefield.firstElementChild;
+    
     link.classList.remove("winner-pic");
     console.log(link);
     link.firstElementChild.src = characters[link.dataset.char].img_xs;

@@ -18,13 +18,18 @@
 
                     <!-- Modal content -->
                     <div class="modal-content">
-                        <img id="imgFightersAtt" class="imgFightersAtt" />
+                        <div class="modal-pic-life">
+                            <img id="imgFightersAtt" class="imgFightersAtt" />
+                            <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter> 
+                        </div>
                         <div class="modal-info" id="modal-info">
                             <img id="imgVs" class="imgVs" src="imgVs.png">
                             <div class="details" id="details"></div>
                         </div>
-                            
-                        <img id="imgFightersDef" class="imgFightersDef" />  
+                        <div class="modal-pic-life">
+                            <img id="imgFightersDef" class="imgFightersDef" />  
+                            <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter>
+                        </div> 
                     </div>
 
                 </div>
