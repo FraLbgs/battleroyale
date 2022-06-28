@@ -65,7 +65,7 @@ function getCharacters(arr){
         for(let i=0;i<3;i++){
             li += "<li>"+keys[i]+" : "+values[i]+"</li>"
         }
-        li += "<li>"+keys[3]+" : <progress class='pv' max='50' value="+values[3]+"></progress></li>"
+        li += "<li>"+keys[3]+" : <meter class='pv' max='50' low='20' value="+values[3]+"></meter></li>"
         stats.innerHTML += li;
         divCharStats.appendChild(stats);
         document.getElementById("fighters").appendChild(divCharStats);
@@ -101,7 +101,7 @@ function getDefenseScore(char) {
 function decreaseLife(char, value) {
     char.stats.life -= value;
     const life = document.querySelector('[data-char="'+characters.indexOf(char)+'"] + ul li:last-child');
-    life.innerHTML = "life : <progress class='pv' max='50' value="+char.stats.life+"></progress>";
+    life.innerHTML = "life : <meter class='pv' max='50' low='20' value="+char.stats.life+"></meter>";
     return char.stats.life;
 }
 
