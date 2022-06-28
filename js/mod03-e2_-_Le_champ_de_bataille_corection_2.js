@@ -1,5 +1,6 @@
 let characters = [];
 let fighters = [];
+let details =document.getElementById("details") ;
 
 try{
     fetch("https://akabab.github.io/superhero-api/api/all.json")
@@ -36,7 +37,12 @@ function getCharacters(arr){
             life:50
         }
         characters.push(infoChar);
-        charList += "<a href='#' class='char-list' data-char='"+characters.indexOf(infoChar)+"'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
+        charList += "<a href='#' title='Weapon : "+infoChar.stats.weapon+
+        "\nShield : "+infoChar.stats.shield+
+        "\nCombat : "+infoChar.stats.combat+
+        "\nLife : "+infoChar.stats.life+
+        "' class='char-list' data-char='"+characters.indexOf(infoChar)+
+        "'><img src='"+infoChar.img_xs+"' alt='"+infoChar.name+"'> " +infoChar.name+ " </a>";
     }
     document.getElementById("characters").innerHTML = charList;
 
@@ -105,9 +111,11 @@ function buryTheDeads() {
         if(fighter.stats.life<=0){
             console.log(fighter.stats.life);
             document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]').parentElement.remove();
+            details.innerHTML += `${fighter.name} est mort!!!<br><br>`;
         }
     }
     fighters = fighters.filter(char => char.stats.life > 0);
+    
 }
 
 // // Faire s'affronter 2 joueurs
@@ -115,27 +123,26 @@ function buryTheDeads() {
 function fight(a, d) {
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
-    
+   
     // Get the modal
-    let modal = document.getElementById("myModal");
+    const modal = document.getElementById("myModal");
+    const test = document.getElementById("imgFightersAtt");
     
-    // Get the button that opens the modal
-    let btn = document.getElementById("fight");
-    
-    // When the user clicks on the button, open the modal
-    btn.onclick = function() {
-      modal.style.display = "block"; 
+    // Open the modal
+    console.log(modal, test);
+    modal.style.display = "block"; 
     document.getElementById('imgFightersAtt').src = a.img_sm;
     document.getElementById('imgFightersDef').src = d.img_sm;
-    }
-  
+    details.innerHTML = `${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.<br><br>`;
     console.log(`${a.name} avec une attaque de ${attackScore} fonce sur ${d.name} qui a une défense de ${defScore}.`);
     if (attackScore > defScore) {
         decreaseLife(d, attackScore-defScore);
+        details.innerHTML += `${d.name} perd ${attackScore-defScore} points de vie, il lui en reste ${d.stats.life} !<br><br>`;
         console.log(`${d.name} perd ${attackScore-defScore} points de vie, il lui en reste ${d.stats.life} !`); 
         buryTheDeads();
         return true;
     }
+    details.innerHTML += `${d.name} résiste à l'attaque !<br><br>`;
     console.log(`${d.name} résiste à l'attaque !`);
     return false;
 }
@@ -152,11 +159,12 @@ function battle() {
     
     if (fighters.length <= 1) {
         console.table(fighters);
+        details.innerHTML += `The winner is ${fighters[0].name}.`;
         console.log(`The winner is ${fighters[0].name}.`);
-        const winner = document.getElementById("fighters").innerHTML;
+        let link = document.querySelector(".fighters a");
+        link.classList.add("winner-pic");
         document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
-        document.getElementById("fighters").innerHTML += winner;
-        document.getElementById("fighters").innerHTML += "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";
+        document.getElementById("fighters").appendChild(link);
         document.getElementById("new-select").style.display="block";
         document.getElementById("fight").style.display="none";
         return;
@@ -167,10 +175,12 @@ function battle() {
 document.getElementById("fight").addEventListener("click", battle);
 
 document.getElementById("new-select").addEventListener("click", function(e){
+    document.getElementById("myModal").style.display="none";
     fighters = []
     const battlefield = document.getElementById("fighters");
     battlefield.firstElementChild.remove();
-    const link = battlefield.firstElementChild.firstElementChild;
+    const link = battlefield.firstElementChild;
+    link.classList.remove("winner-pic");
     console.log(link);
     link.firstElementChild.src = characters[link.dataset.char].img_xs;
     document.getElementById("characters").appendChild(link);
@@ -178,8 +188,3 @@ document.getElementById("new-select").addEventListener("click", function(e){
     document.getElementById("new-select").style.display="none";
     document.getElementById("fight").style.display="block";
 });
-
-
-
-
-

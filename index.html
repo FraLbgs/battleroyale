@@ -10,25 +10,35 @@
 <body class="body">
     <div class="main">
         <div class="main-char">
+            <div class="select">Choisissez les personnages qui s'affronteront en cliquant dessus :</div>
             <div id="characters" class="characters"></div>
-            <!-- <button id="myBtn">Open Modal</button> -->
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    
-    <img id="imgFightersAtt" class="imgFightersAtt" /><img id="imgVs" class="imgVs" src="imgVs.png"><img id="imgFightersDef" class="imgFightersDef" />  
-</div>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <img id="imgFightersAtt" class="imgFightersAtt" />
+                        <div class="modal-info" id="modal-info">
+                            <img id="imgVs" class="imgVs" src="imgVs.png">
+                            <div class="details" id="details"></div>
+                        </div>
+                            
+                        <img id="imgFightersDef" class="imgFightersDef" />  
+                    </div>
 
-</div>
+                </div>
+            
+
             <div class="button">
                 <button id="fight" class="fight">fight !</button>
                 <button id="new-select" class="new-select">Nouvelle sélection</button>
             </div>
         </div>
-        <div id="fighters" class="fighters"></div>
+        <div class="main-fight">
+            <div class="title-fight">COMBATTANTS :</div>
+            <div id="fighters" class="fighters"></div>
+        </div>
         <!-- <div id="duel" class="duel"><img id="imgFightersAtt" class="imgFightersAtt" /><img id="imgVs" class="imgVs" src="imgVs.jpg">
             <img id="imgFightersDef" class="imgFightersDef" />
         </div> -->
