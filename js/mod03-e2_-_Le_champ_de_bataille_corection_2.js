@@ -8,22 +8,22 @@ try{
     .then(response => response.json())
     .then(function (json){
         getCharacters(json);
-        getAlignment(json);
+        // getAlignment(json);
     }) 
 }
 catch (error) {
     console.error("error" + error);
 }
 
-function getAlignment(arr){
-    for(const char of arr){
-        alignment.push(char.biography.alignment);
-    }
-    console.log(alignment);
-    // alignment.sort()
-    alignment = alignment.filter((pub, i) => alignment.indexOf(pub) == i);
-    console.log(alignment);
-}
+// function getAlignment(arr){
+//     for(const char of arr){
+//         alignment.push(char.biography.alignment);
+//     }
+//     console.log(alignment);
+//     // alignment.sort()
+//     alignment = alignment.filter((pub, i) => alignment.indexOf(pub) == i);
+//     console.log(alignment);
+// }
 
 
 function getCharacters(arr){
