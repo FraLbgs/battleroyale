@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Battle Royale</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="body">
     <div class="main">
         <div class="main-char">
-            <div class="select">Choose the characters that will fight by clicking on them :</div>
+            <div class="select">Choisissez les persos qui vont combattre :</div>
             <div id="characters" class="characters"></div>
 
                 <!-- The Modal -->
@@ -36,17 +36,17 @@
             
 
             <div class="button">
-                <button id="fight" class="fight">fight !</button>
+                <button id="reset" class="reset">Recommencer</button>
+                <button id="fight" class="fight">Fight !</button>
                 <button id="new-select" class="new-select">New selection</button>
+                <button id="cimetery-btn" class="cimetery-btn">Cimetière/Combattants</button>
             </div>
         </div>
-        <div class="main-fight">
-            <div class="title-fight">FIGHTERS :</div>
+        <div class="main-fight" id="main-fight">
+            <div class="title-fight">Combattants :</div>
             <div id="fighters" class="fighters"></div>
         </div>
-        <!-- <div id="duel" class="duel"><img id="imgFightersAtt" class="imgFightersAtt" /><img id="imgVs" class="imgVs" src="imgVs.jpg">
-            <img id="imgFightersDef" class="imgFightersDef" />
-        </div> -->
+        <div class="cimetery" id="cimetery"><div class="cim-ttl">Cimetière :</div></div>
     </div>
 
 

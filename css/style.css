@@ -31,7 +31,7 @@
     padding: 10px;
 }
 
-.select, .title-fight{
+.select, .title-fight, .cim-ttl{
     color: white;
     text-align: center;
     font-size: 25px;
@@ -150,13 +150,13 @@
 
 .button{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
     padding-top: 20px;
 }
 
-.fight,.new-select{
-    width: 50%;
+.fight,.new-select,.reset,.cimetery-btn{
+    /* width: 50%; */
     font-size: 15px;
     font-weight: bold;
     background: linear-gradient(90deg,rgb(138, 101, 101),rgb(164, 164, 221));
@@ -165,11 +165,30 @@
     cursor: pointer;
 }
 
+.fight{
+    width: 50%;
+}
+
 .new-select{
+    width: 50%;
     display: none;
 }
 
+.reset, .cimetery-btn{
+    width :20%
+}
+
 .main-fight{
+    background-color: rgba(124, 139, 139, 0.5);
+    width: 400px;
+    height:96%;
+    padding: 10px 10px 0 10px;
+    overflow-y: scroll;
+}
+
+.cimetery{
+    flex-direction: column;
+    gap: 10px;
     background-color: rgba(124, 139, 139, 0.5);
     width: 400px;
     height:96%;
@@ -246,4 +265,16 @@
 
 .winner-pic img{
     width: 95%;
+}
+
+.cimetery{
+    display: none;
+}
+
+.cim-display{
+    display: flex;
+}
+
+.main-fight-display{
+    display: none;
 }
