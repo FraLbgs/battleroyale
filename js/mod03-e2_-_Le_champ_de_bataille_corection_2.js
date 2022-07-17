@@ -58,6 +58,7 @@ function getCharacters(arr){
                 combat:char.powerstats.combat,
                 life:50
             }
+            infoChar.def=0;
             characters.push(infoChar);
             stats += setStats(infoChar);
         }
@@ -147,8 +148,6 @@ function fight(a, d) {
     // Get the modal
     const modal = document.getElementById("myModal");
 
-    
-    
     // Open the modal
     // console.log(modal);
     modal.style.display = "block"; 
@@ -167,13 +166,19 @@ function fight(a, d) {
         buryTheDeads();
         return true;
     }
+    d.def++;
+    // console.log(d.name, d.def);
+    // console.log(fighters);
     details.innerHTML += `${d.name} résiste à l'attaque !<br><br>`;
     // console.log(`${d.name} résiste à l'attaque !`);
+    if(d.def%3 === 0) d.stats.shield--;
+    const def = document.querySelector('[data-char="'+characters.indexOf(d)+'"] + ul li:nth-child(2)');
+    def.innerHTML = "shield : "+d.stats.shield;
     return false;
 }
 
 function battle() {
-    console.log("test");
+    // console.log("test");
     const attacker = getRandomChar();
     const defender = getRandomChar(attacker);
     
@@ -197,6 +202,7 @@ function battle() {
         pvAtt.setAttribute("value", attacker.stats.life);
         const pvDef = document.getElementById("pv-def");
         pvDef.setAttribute("value", defender.stats.life);
+        fighters[0].stats.combat++;
         return;
     }
 
