@@ -39,6 +39,7 @@ function getCharacters(arr){
         try{
             document.getElementById("characters").innerHTML = JSON.parse(localStorage.getItem("chars"));
             characters = JSON.parse(localStorage.getItem("characters"));
+            console.log(characters);
             document.getElementById("cimetery").innerHTML = JSON.parse(localStorage.getItem("cimetery"));
 
         }
@@ -125,7 +126,7 @@ function decreaseLife(char, value) {
 }
 
 // // Sortir un joueur mort du jeu
-function buryTheDeads() {
+function buryTheDeads(a) {
     for(const fighter of fighters){
         if(fighter.stats.life<=0){
             // console.log(document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]'));
@@ -133,6 +134,9 @@ function buryTheDeads() {
             // document.querySelector('[data-char="'+characters.indexOf(fighter)+'"]').parentElement.remove();
             details.innerHTML += `${fighter.name} succombe à l'attaque !!!<br><br>`;
             // characters.splice([characters.indexOf(fighter)], 1);
+            a.stats.combat++;
+            const combat = document.querySelector('[data-char="'+characters.indexOf(a)+'"] + ul li:nth-child(3)');
+            combat.innerHTML = "combat : "+a.stats.combat;
         }
     }
     fighters = fighters.filter(char => char.stats.life > 0);
@@ -163,7 +167,7 @@ function fight(a, d) {
             details.innerHTML += `il lui en reste ${d.stats.life} !<br><br>`;
         }
         // console.log(`${d.name} perd ${attackScore-defScore} points de vie, il lui en reste ${d.stats.life} !`); 
-        buryTheDeads();
+        buryTheDeads(a);
         return true;
     }
     d.def++;
@@ -202,7 +206,7 @@ function battle() {
         pvAtt.setAttribute("value", attacker.stats.life);
         const pvDef = document.getElementById("pv-def");
         pvDef.setAttribute("value", defender.stats.life);
-        fighters[0].stats.combat++;
+        // fighters[0].stats.combat++;
         return;
     }
 
