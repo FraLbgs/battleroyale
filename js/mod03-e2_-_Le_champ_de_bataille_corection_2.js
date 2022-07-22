@@ -11,6 +11,8 @@ catch (error) {
     console.error("error" + error);
 }
 
+cancelFighter()
+
 // let publisher = []
 // function getPublisher(arr){
 //     for(const char of arr){
@@ -39,7 +41,6 @@ function getCharacters(arr){
         try{
             document.getElementById("characters").innerHTML = JSON.parse(localStorage.getItem("chars"));
             characters = JSON.parse(localStorage.getItem("characters"));
-            console.log(characters);
             document.getElementById("cimetery").innerHTML = JSON.parse(localStorage.getItem("cimetery"));
 
         }
@@ -78,8 +79,12 @@ function getCharacters(arr){
             // console.log(index, characters[index]);
             // console.log(characters);
             cible.firstElementChild.src = characters[index].img_sm;
-            const divCharStats = document.createElement("div");
+            let divCharStats = document.createElement("div");
             divCharStats.className = "char-stat";
+            divCharStats.setAttribute("data-fighter-pos", fighters.indexOf(characters[index]));
+            // console.log(fighters.indexOf(characters[index]));
+            const cross = "<p class='cross' id='cross'>x</p>"
+            divCharStats.innerHTML += cross;
             divCharStats.appendChild(cible);
             const keys = Object.keys(characters[index].stats);
             const values = Object.values(characters[index].stats);
@@ -93,6 +98,21 @@ function getCharacters(arr){
     
             // console.table(fighters);
         });
+}
+
+function cancelFighter(){
+    const fightersList = document.querySelector(".fighters");
+    fightersList.addEventListener("click", function(e){
+        if(e.target.className === "cross"){
+            const link = e.target.nextElementSibling;
+            const index = link.dataset.char;
+            link.firstElementChild.src = characters[index].img_xs;
+            fighters.splice(e.target.parentElement.dataset.fighterPos, 1);
+            document.getElementById("characters").appendChild(link);
+            e.target.parentElement.remove();
+            // console.log(fighters);
+        }
+    });
 }
 
 
@@ -195,7 +215,7 @@ function battle() {
     if (fighters.length <= 1) {
         // console.table(fighters);
         details.innerHTML += `Le gagnant est ${fighters[0].name} avec ${fighters[0].stats.life} PV restant.`;
-        console.log(`The winner is ${fighters[0].name}.`);
+        // console.log(`The winner is ${fighters[0].name}.`);
         let link = document.querySelector(".fighters a");
         link.classList.add("winner-pic");
         document.getElementById("fighters").innerHTML = "<img class='winner' src='https://redswan5.com/wp-content/uploads/2017/04/WinnerGraphic-1-900x756.jpg' alt='winner' >";

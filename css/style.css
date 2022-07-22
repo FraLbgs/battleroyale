@@ -57,7 +57,7 @@
     transition: all 0.3s ease;
 }
 
-.char-list:hover{
+.characters .char-list:hover{
     transform: scale(1.1,1.1);
     transition: all 0.3s ease;
 }
@@ -214,12 +214,22 @@
 
 
 .char-stat{
+    position: relative;
     display: flex;
     padding: 5px;
     width: 100%;
     height: 16%;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+}
+
+.cross{
+    position: absolute;
+    top: -23px;
+    right: 5px;
+    font-size: 21px;
+    color: aliceblue;
+    cursor: pointer;
 }
 
 .char-stat [data-char]{
@@ -237,6 +247,7 @@
     align-items: center;
     font-size: 15px;
     width: 180px;
+    cursor: default;
 }
 
 .stats-list{
