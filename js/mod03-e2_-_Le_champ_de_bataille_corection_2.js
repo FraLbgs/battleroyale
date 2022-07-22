@@ -11,7 +11,7 @@ catch (error) {
     console.error("error" + error);
 }
 
-cancelFighter()
+cancelFighter();
 
 // let publisher = []
 // function getPublisher(arr){
@@ -76,13 +76,9 @@ function getCharacters(arr){
             const cible = e.target.hasAttribute("data-char") ? e.target : e.target.parentElement;
             const index = cible.dataset.char;
             fighters.push(characters[index]);
-            // console.log(index, characters[index]);
-            // console.log(characters);
             cible.firstElementChild.src = characters[index].img_sm;
             let divCharStats = document.createElement("div");
             divCharStats.className = "char-stat";
-            divCharStats.setAttribute("data-fighter-pos", fighters.indexOf(characters[index]));
-            // console.log(fighters.indexOf(characters[index]));
             const cross = "<p class='cross' id='cross'>x</p>"
             divCharStats.innerHTML += cross;
             divCharStats.appendChild(cible);
@@ -107,7 +103,11 @@ function cancelFighter(){
             const link = e.target.nextElementSibling;
             const index = link.dataset.char;
             link.firstElementChild.src = characters[index].img_xs;
-            fighters.splice(e.target.parentElement.dataset.fighterPos, 1);
+            for(const f of fighters){
+                if(link.innerText === f.name){
+                    fighters.splice(fighters.indexOf(f), 1);
+                }
+            }
             document.getElementById("characters").appendChild(link);
             e.target.parentElement.remove();
             // console.log(fighters);
@@ -165,7 +165,7 @@ function buryTheDeads(a) {
 
 // // Faire s'affronter 2 joueurs
 
-function fight(a, d) {
+function fight(a, d) {    
     const attackScore = getAttackScore(a);
     const defScore = getDefenseScore(d);
    
@@ -202,6 +202,10 @@ function fight(a, d) {
 }
 
 function battle() {
+    if(document.getElementById("fighters").childElementCount < 2){
+        alert("Veuillez choisir au moins 2 combattants !");
+        return;
+    }
     // console.log("test");
     const attacker = getRandomChar();
     const defender = getRandomChar(attacker);
