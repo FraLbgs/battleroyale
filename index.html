@@ -10,31 +10,78 @@
 <body class="body">
     <div class="main">
         <div class="main-char">
-            <div class="select">Choisissez les persos qui vont combattre :</div>
+            <div class="select">
+                <button id="resume" class="resume">Résumé</button>
+                <p>Choisissez les persos qui vont combattre :</p>
+                <button id="rules" class="rules">Règles</button>
+            </div>
             <div id="characters" class="characters"></div>
 
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-pic-life">
-                            <img id="imgFightersAtt" class="imgFightersAtt" />
-                            <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter> 
-                        </div>
-                        <div class="modal-info" id="modal-info">
-                            <img id="imgVs" class="imgVs" src="img/imgVs.png">
-                            <div class="details" id="details"></div>
-                        </div>
-                        <div class="modal-pic-life">
-                            <img id="imgFightersDef" class="imgFightersDef" />  
-                            <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter>
-                        </div> 
-                    </div>
-
+            <div id="modal-rules" class="modal-rules">
+                <div class="modal-rules-content">
+                    <h2 class="rules-ttl">Règles :</h2>
+                    <p>
+                        Cliquez sur un personnage pour le transférer dans la zone des Combattants, vous pouvez en mettre autant que vous voulez 
+                        mais il en faut au minimum 2. Plus il y a de combattants, plus le combat sera long donc attention à ne pas trop en mettre.
+                    </p>
+                    <p>
+                        Une fois que vous avez choisi tous vos combattants, vous pouvez cliquer sur le bouton "Fight !" en bas. 
+                        Une fenêtre apparaitra avec l'attaquant à gauche et le défenseur à droite, au centre il y aura le texte de l'action en cours.
+                    </p>
+                    <p>
+                        Continuez d'appuyer sur le bouton "Fight !" jusqu'à ce qu'il ne reste plus qu'un seul héros dans les combattants. 
+                        A ce moment, vous pouvez cliquer sur le bouton "Nouvelle Sélection" pour fermer la fenêtre et choisir de nouveaux combattants.
+                    </p>
+                    <p>
+                        Le héros vainqueur retourne dans la sélection des personnages (tout à la fin) avec les stats qu'il lui restait.
+                    </p>
+                    <p>
+                        Vous pouvez cliquer sue le bouton "Cimetière/Combattants" pour voir les héros qui sont morts.
+                    </p>
+                    <p>
+                        Le bouton "Résumé" vous donne des détails sur les héros ayant déjà combattu (nombre de combats, de kills, les dégâts, ...).
+                    </p>
+                    <p>
+                        Le bouton "Recommencer" vous permet de tout réinitialiser.
+                    </p>
+                    <br>
+                    <h2 class="rules-ttl">Détails des combats :</h2>
+                    <p>
+                        L'attaque correspond à la valeur de weapon + une valeur aléatoire entre 1 et la combat. <br>
+                        La défense correspond à la valeur de shield + une valeur aléatoire entre 1 et la combat. <br>
+                        Tous les héros commencent avec 50 PV.
+                    </p>
+                    <p>
+                        Un défenseur perd 1 point de shield toutes les 3 défenses réussies.
+                        Si l'attaquant tue le défenseur, il gagne 1 de combat.
+                    </p>
                 </div>
-            
+            </div>
+        
+            <div id="myModal" class="modal"> <!-- The Fighting Modal -->
+                <div class="modal-content"> <!-- Modal content -->
+                    <div class="modal-pic-life">
+                        <p id="att-f" class="name-fight"></p>
+                        <img id="imgFightersAtt" class="imgFightersAtt" />
+                        <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter> 
+                    </div>
+                    <div class="modal-info" id="modal-info">
+                        <img id="imgVs" class="imgVs" src="img/imgVs.png">
+                        <div class="details" id="details"></div>
+                    </div>
+                    <div class="modal-pic-life">
+                        <p id="def-f" class="name-fight"></p>
+                        <img id="imgFightersDef" class="imgFightersDef" />  
+                        <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter>
+                    </div> 
+                </div>
 
+            </div>
+
+            <div id="modal-resume" class="modal-resume">
+                <div class="modal-resume-content"></div>
+            </div>
+            
             <div class="button">
                 <button id="reset" class="reset">Recommencer</button>
                 <button id="fight" class="fight">Fight !</button>
@@ -53,6 +100,6 @@
 
 
     
-<script src="js/mod03-e2_-_Le_champ_de_bataille_corection_2.js"></script>
+<script src="js/scriptbr.js"></script>
 </body>
 </html>
