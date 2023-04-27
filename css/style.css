@@ -100,7 +100,6 @@
 }
 
 .modal-resume, .modal-rules {
-    display: none;
     position: absolute;
     z-index: 10;
     left: 25%;
@@ -335,5 +334,9 @@
 }
 
 .main-fight-display{
+    display: none;
+}
+
+.hidden{
     display: none;
 }

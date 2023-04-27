@@ -288,17 +288,9 @@ for(const c of resumeF){
 }
 
 document.getElementById("resume").addEventListener("click", function(e){
-    document.getElementById("modal-resume").style.display = "block";
-});
-
-document.querySelector(".modal-resume").addEventListener("click", function(e){
-    document.getElementById("modal-resume").style.display = "none";
+    document.getElementById("modal-resume").classList.toggle("hidden");
 });
 
 document.getElementById("rules").addEventListener("click", function(e){
-    document.getElementById("modal-rules").style.display = "block";
-});
-
-document.querySelector(".modal-rules").addEventListener("click", function(e){
-    document.getElementById("modal-rules").style.display = "none";
+    document.getElementById("modal-rules").classList.toggle("hidden");
 });

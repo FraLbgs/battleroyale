@@ -11,13 +11,17 @@
     <div class="main">
         <div class="main-char">
             <div class="select">
-                <button id="resume" class="resume">Résumé</button>
+                <button id="resume" class="resume">Afficher/Masquer le Résumé</button>
                 <p>Choisissez les persos qui vont combattre :</p>
-                <button id="rules" class="rules">Règles</button>
+                <button id="rules" class="rules">Afficher/Masquer les Règles</button>
             </div>
             <div id="characters" class="characters"></div>
-
-            <div id="modal-rules" class="modal-rules">
+            
+            <div id="modal-resume" class="modal-resume hidden">
+                <div class="modal-resume-content"></div>
+            </div>
+            
+            <div id="modal-rules" class="modal-rules hidden">
                 <div class="modal-rules-content">
                     <h2 class="rules-ttl">Règles :</h2>
                     <p>
@@ -49,10 +53,12 @@
                     <p>
                         L'attaque correspond à la valeur de weapon + une valeur aléatoire entre 1 et la combat. <br>
                         La défense correspond à la valeur de shield + une valeur aléatoire entre 1 et la combat. <br>
-                        Tous les héros commencent avec 50 PV.
+                        Tous les héros commencent avec 50 PV et perdent la différence entre l'attaque et la défense quand ils sont touchés.<br>
+                        Il y a 10% de chance de faire un coup critique (dégâts augmentés de 20%).<br>
+                        Il y a 10% de chance de se soigner de 25% de ses PV perdus à chaque attaque donnée.
                     </p>
                     <p>
-                        Un défenseur perd 1 point de shield toutes les 3 défenses réussies.
+                        Un défenseur perd 2 points de shield toutes les 3 défenses réussies.
                         Si l'attaquant tue le défenseur, il gagne 1 de combat.
                     </p>
                 </div>
@@ -76,10 +82,6 @@
                     </div> 
                 </div>
 
-            </div>
-
-            <div id="modal-resume" class="modal-resume">
-                <div class="modal-resume-content"></div>
             </div>
             
             <div class="button">
