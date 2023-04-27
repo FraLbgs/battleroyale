@@ -114,15 +114,50 @@
     margin: 0;
     position: relative;
     border: thick double #531010;
-    padding: 20px;
+    padding: 15px;
     height: 100%;
     color: white;
     border-radius: 40px;
     overflow: auto;
 }
 
+.modal-resume-content{
+    font-size: 15px;
+}
+
+.filter-resume{
+    margin-top: 0;
+}
+
+.letter-resume, .all-fighters{
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.letter-resume{
+    margin: 1px;
+}
+
+.fighters-resume{
+    list-style: none;
+    padding-left: 0;
+}
+
+.fighters-info{
+    padding-bottom: 15px;
+}
+
+.fighters-info pre{
+    margin: 0;
+    padding: 2px;
+}
+
 .resume-name{
     color: coral;
+    margin: 0;
 }
 
 .modal-rules-content p{
@@ -133,15 +168,26 @@
     display: flex;
     flex-direction: column;
     height: 60%;
+    color: white;
+}
+
+.pv-fighter{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .pv-modal{
-    width: 100%;
-    height: 10%;
+    width: 90%;
+    height: 100%;
+}
+
+.pv-value{
+    font-size: 20px;
 }
 
 .name-fight{
-    color: white;
     text-align: center;
     margin: 2px;
     font-size: 25px;

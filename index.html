@@ -18,7 +18,11 @@
             <div id="characters" class="characters"></div>
             
             <div id="modal-resume" class="modal-resume hidden">
-                <div class="modal-resume-content"></div>
+                <div class="modal-resume-content">
+                    <button id="all-fighters" class="all-fighters">TOUS LES COMBATTANTS</button>
+                    <p class="filter-resume"></p>
+                    <ul class="fighters-resume"></ul>
+                </div>
             </div>
             
             <div id="modal-rules" class="modal-rules hidden">
@@ -69,7 +73,9 @@
                     <div class="modal-pic-life">
                         <p id="att-f" class="name-fight"></p>
                         <img id="imgFightersAtt" class="imgFightersAtt" />
-                        <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter> 
+                        <div class="pv-fighter">
+                            <meter class='pv-modal' id="pv-att" max='50' low='20' value=""></meter><span id="pv-att-value" class="pv-value"></span>
+                        </div> 
                     </div>
                     <div class="modal-info" id="modal-info">
                         <img id="imgVs" class="imgVs" src="img/imgVs.png">
@@ -78,7 +84,9 @@
                     <div class="modal-pic-life">
                         <p id="def-f" class="name-fight"></p>
                         <img id="imgFightersDef" class="imgFightersDef" />  
-                        <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter>
+                        <div class="pv-fighter">
+                            <meter class='pv-modal' id="pv-def" max='50' low='20' value=""></meter><span id="pv-def-value" class="pv-value"></span>
+                        </div>
                     </div> 
                 </div>
 
